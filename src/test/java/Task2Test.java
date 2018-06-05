@@ -25,7 +25,17 @@ public class Task2Test extends BaseTest{
       mainPage.selectMainMenu("Страхование");
       mainPage.selectSubMenu("Путешествия и покупки");
 
-      new InsurancePage(driver).sendButton.click;
+      new InsurancePage(driver).issueButtonClick.click();
+
+      InsurancePage insurancePage = new InsurancePage(driver);
+      String actualTitle = insurancePage.title.getText();
+      String expectedTitle = "Страхование путешественников";
+      assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
+              actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
+
+
+
+
 
       BlanckPage blanckPage = new BlanckPage(driver);
       String actualTitle = blanckPage.title.getText();
