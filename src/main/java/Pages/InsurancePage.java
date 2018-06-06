@@ -19,6 +19,6 @@ public class InsurancePage extends BasePage {
     public InsurancePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         Wait<WebDriver> wait = new WebDriverWait(driver, 40, 1000);
-        wait.until(ExpectedConditions.visibilityOf(issueButtonClick)).click();
+        wait.until(ExpectedConditions.visibilityOf(issueButtonClick));
     }
 }
