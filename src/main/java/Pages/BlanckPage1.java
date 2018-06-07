@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BlanckPage1 extends BasePage {
+public class BlanckPage1 {
 
     @FindBy(xpath = "//h3 [text()='Выберите сумму страховой защиты']/parent::section")
     public WebElement summa;

@@ -11,16 +11,16 @@ import static org.junit.Assert.assertTrue;
 public class Task2Test extends BaseTest{
 
    @Test
-   public void testInsurance() throws Exception {
+   public void testInsurance() {
        driver.get(baseUrl);
        MainPage mainPage = new MainPage(driver);
-      mainPage.selectMainMenu("Страхование");
-      mainPage.selectSubMenu("Путешествия и покупки");
+       mainPage.selectMainMenu("Страхование");
+       mainPage.selectSubMenu("Путешествия и покупки");
 
-      InsurancePage insurancePage = new InsurancePage(driver);
-      Assert.assertEquals("Страхование путешественников", insurancePage.title.getText());
+       InsurancePage insurancePage = new InsurancePage(driver);
+       Assert.assertEquals("Страхование путешественников", insurancePage.title.getText());
 
-      new InsurancePage(driver).issueButtonClick.click();
+       new InsurancePage(driver).issueButtonClick.click();
 
        for (String handle : driver.getWindowHandles()){ //Переключение экрана
            driver.switchTo().window(handle);
@@ -70,8 +70,5 @@ public class Task2Test extends BaseTest{
 
        By by = By.xpath("//div[@ng-show='tryNext && myForm.$invalid']");
        Assert.assertEquals(true, isElementPresent(by));
-
    }
-
-
 }

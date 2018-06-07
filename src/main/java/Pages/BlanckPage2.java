@@ -1,7 +1,6 @@
 package Pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Wait;
 
-public class BlanckPage2 extends BasePage {
+public class BlanckPage2 {
     @FindBy(xpath = "//span [contains(text(),'Оформление')]")
     public WebElement blanck_name;
 
@@ -136,6 +135,10 @@ public class BlanckPage2 extends BasePage {
     public void checkFieldData(String field, String value) {
         Assert.assertEquals(value, getFillField(field));
 
+    }
+    public void fillField(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value);
     }
 }
 
