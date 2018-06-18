@@ -44,13 +44,6 @@ public class Task2Test extends BaseTest{
        assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
                actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
 
-
-       // Фамилию и Имя, Дату рождения застрахованных
-       blanckPage.fillField("Застрахованные: Фамилия", "Smirnova");
-       blanckPage.fillField("Застрахованные: Имя", "Anna");
-       blanckPage.fillField("Застрахованные: Дата рождения", "12.11.1990");
-
-       
       // Фамилию и Имя, Дату рождения застрахованных
        blanckPage.fillField("Застрахованные: Фамилия", "Smirnova");
        blanckPage.fillField("Застрахованные: Имя", "Anna");

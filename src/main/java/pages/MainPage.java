@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
     WebDriver driver;
@@ -12,7 +15,7 @@ public class MainPage {
 
     WebElement mainMenu;
 
-    @FindBy(xpath = "//ul[contains(@class,'lg-menu__list')]//li[6]//div[@class='kitt-row']//div[1]//ul")
+    @FindBy(xpath = "(//div[@class='lg-menu__sub'])[6]")
     WebElement subMenu;
 
        public MainPage(WebDriver driver){
