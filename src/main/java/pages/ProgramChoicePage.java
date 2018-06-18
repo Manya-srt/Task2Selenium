@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BlanckPage1 {
+public class ProgramChoicePage {
 
     @FindBy(xpath = "//h3 [text()='Выберите сумму страховой защиты']/parent::section")
     public WebElement summa;
@@ -17,7 +17,7 @@ public class BlanckPage1 {
     @FindBy(xpath = "//span[contains(text(),'Оформить')]")
     public WebElement issueButton;
 
-    public BlanckPage1(WebDriver driver){
+    public ProgramChoicePage(WebDriver driver){
         PageFactory.initElements(driver, this);
         Wait<WebDriver> wait = new WebDriverWait(driver,10, 1000);
         wait.until(ExpectedConditions.visibilityOf(summa));

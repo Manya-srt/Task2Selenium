@@ -1,4 +1,4 @@
-package Pages;
+package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Wait;
 
-public class BlanckPage2 {
+public class BlanckPage {
     @FindBy(xpath = "//span [contains(text(),'Оформление')]")
     public WebElement blanck_name;
 
@@ -52,7 +52,10 @@ public class BlanckPage2 {
     @FindBy(xpath = "//span[contains(text(),'Продолжить')]")
     public WebElement continueButton;
 
-    public BlanckPage2(WebDriver driver) {
+    @FindBy(xpath = "//div[@ng-show='tryNext && myForm.$invalid']")
+    public WebElement errorMessage;
+
+    public BlanckPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         Wait<WebDriver> wait = new WebDriverWait(driver, 10, 1000);
         wait.until(ExpectedConditions.visibilityOf(blanck_name));
