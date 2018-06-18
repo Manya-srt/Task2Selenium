@@ -1,10 +1,8 @@
-import Pages.BlanckPage1;
-import Pages.BlanckPage2;
+import Pages.ProgramChoicePage;
+import Pages.BlanckPage;
 import Pages.InsurancePage;
 import Pages.MainPage;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -33,59 +31,59 @@ public class Task2Test extends BaseTest{
        }
 
        // На вкладке – Выбор полиса  выбрать сумму страховой защиты – Минимальная
-       BlanckPage1 blanckPage1 = new BlanckPage1(driver);
-       blanckPage1.selectSum("Минимальная");
+       ProgramChoicePage programChoicePage = new ProgramChoicePage(driver);
+       programChoicePage.selectSum("Минимальная");
 
        // Нажать Оформить
-       blanckPage1.issueButton.click();
+       programChoicePage.issueButton.click();
 
        // На вкладке Оформление заполнить поля:
-       BlanckPage2 blanckPage2 = new BlanckPage2(driver);
-       String actualTitle = blanckPage2.blanck_name.getText();
+       BlanckPage blanckPage = new BlanckPage(driver);
+       String actualTitle = blanckPage.blanck_name.getText();
        String expectedTitle = "Оформление";
        assertTrue(String.format("Заголовок равен [%s]. Ожидалось - [%s]",
                actualTitle, expectedTitle), actualTitle.contains(expectedTitle));
+
        // Фамилию и Имя, Дату рождения застрахованных
-       blanckPage2.fillField("Застрахованные: Фамилия", "Smirnova");
-       blanckPage2.fillField("Застрахованные: Имя", "Anna");
-       blanckPage2.fillField("Застрахованные: Дата рождения", "12.11.1990");
+       blanckPage.fillField("Застрахованные: Фамилия", "Smirnova");
+       blanckPage.fillField("Застрахованные: Имя", "Anna");
+       blanckPage.fillField("Застрахованные: Дата рождения", "12.11.1990");
 
        // Данные страхователя: Фамилия, Имя, Отчество, Дата рождения, Пол
-       blanckPage2.fillField("Фамилия", "Смирнова");
-       blanckPage2.fillField("Имя", "Олеся");
-       blanckPage2.fillField("Отчество", "Петровна");
-       blanckPage2.birthDate.click();
-       blanckPage2.fillField("Дата рождения", "13.05.1987");
-       blanckPage2.female.click();
+       blanckPage.fillField("Фамилия", "Смирнова");
+       blanckPage.fillField("Имя", "Олеся");
+       blanckPage.fillField("Отчество", "Петровна");
+       blanckPage.birthDate.click();
+       blanckPage.fillField("Дата рождения", "13.05.1987");
+       blanckPage.female.click();
 
        // Паспортные данные
-       blanckPage2.fillField("Серия паспорта", "5204");
-       blanckPage2.fillField("Номер паспорта", "424578");
-       blanckPage2.fillField("Дата выдачи", "02.06.2014");
-       blanckPage2.fillField("Место выдачи", "ОУФМС России по г. Новосибирск");
+       blanckPage.fillField("Серия паспорта", "5204");
+       blanckPage.fillField("Номер паспорта", "424578");
+       blanckPage.fillField("Дата выдачи", "02.06.2014");
+       blanckPage.fillField("Место выдачи", "ОУФМС России по г. Новосибирск");
 
        // Контактные данные не заполняем
 
        //Проверить, что все поля заполнены правильно
-       blanckPage2.checkFieldData("Застрахованные: Фамилия","Smirnova");
-       blanckPage2.checkFieldData("Застрахованные: Имя", "Anna");
-       blanckPage2.checkFieldData("Застрахованные: Дата рождения","12.11.1990");
+       blanckPage.checkFieldData("Застрахованные: Фамилия","Smirnova");
+       blanckPage.checkFieldData("Застрахованные: Имя", "Anna");
+       blanckPage.checkFieldData("Застрахованные: Дата рождения","12.11.1990");
 
-       blanckPage2.checkFieldData("Фамилия","Смирнова");
-       blanckPage2.checkFieldData("Имя","Олеся");
-       blanckPage2.checkFieldData("Отчество", "Петровна");
-       blanckPage2.checkFieldData("Дата рождения","13.05.1987");
+       blanckPage.checkFieldData("Фамилия","Смирнова");
+       blanckPage.checkFieldData("Имя","Олеся");
+       blanckPage.checkFieldData("Отчество", "Петровна");
+       blanckPage.checkFieldData("Дата рождения","13.05.1987");
 
-       blanckPage2.checkFieldData("Серия паспорта","5204");
-       blanckPage2.checkFieldData("Номер паспорта","424578");
-       blanckPage2.checkFieldData("Дата выдачи", "02.06.2014");
-       blanckPage2.checkFieldData("Место выдачи","ОУФМС России по г. Новосибирск");
+       blanckPage.checkFieldData("Серия паспорта","5204");
+       blanckPage.checkFieldData("Номер паспорта","424578");
+       blanckPage.checkFieldData("Дата выдачи", "02.06.2014");
+       blanckPage.checkFieldData("Место выдачи","ОУФМС России по г. Новосибирск");
 
        //Нажать кнопку Продолжить
-       blanckPage2.continueButton.click();
+       blanckPage.continueButton.click();
 
        // Проверить, что появилось сообщение - Заполнены не все обязательные поля
-       WebElement webElement = driver.findElement(By.xpath("//div[@ng-show='tryNext && myForm.$invalid']"));
-       assertEquals("Заполнены не все обязательные поля", webElement.getText());
+       assertEquals("Заполнены не все обязательные поля", blanckPage.errorMessage.getText());
    }
 }
